@@ -12,7 +12,6 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 
-// Start express app
 const app = express();
 
 // Development logging
