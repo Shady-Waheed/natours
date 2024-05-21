@@ -28,7 +28,13 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set security HTTP headers
-app.use(helmet());
+app.use(helmet({
+  crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: {
+    allowOrigins: ['*'],
+  },
+  contentSecurityPolicy: false,
+}));
 
 // Limit requests from same IP
 const limiter = rateLimit({
