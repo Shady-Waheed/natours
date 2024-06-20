@@ -1,5 +1,4 @@
 const locations = JSON.parse(document.getElementById('map').dataset.locations);
-console.log(locations);
 
 maptilersdk.config.apiKey = 'YExDCio1SPzRYHkzCi3Z';
 const map = new maptilersdk.Map({
@@ -9,8 +8,9 @@ const map = new maptilersdk.Map({
   // center: [-118.113491,34.111745], // starting position [lng, lat]
   zoom: 1, // starting zoom
   // interactive: false,
+  geolocateControl: false,
+  navigationControl: false 
 });
-
 const bounds = new maptilersdk.LngLatBounds();
 
 locations.forEach((loc) => {
@@ -28,7 +28,7 @@ locations.forEach((loc) => {
 
   // Add popup
   new maptilersdk.Popup({
-    offset: 30
+    offset: 30,
   })
     .setLngLat(loc.coordinates)
     .setHTML(`<p>Day ${loc.day}: ${loc.description}</p>`)
